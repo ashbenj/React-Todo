@@ -9,7 +9,7 @@ const TodoList = props => {
 		<div className='mom-life'>
 			{props.tasks.map(item => {
 				console.log(item);
-				return <Item item={item} key={item.id} />;
+				return <Item item={item} key={item.id} toggleItem={props.toggleItem} />;
 			})}
 		</div>
 	);
