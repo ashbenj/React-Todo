@@ -1,32 +1,18 @@
-export const tasks = [
-	{
-		task: 'Clean Kitchen',
-		id: 123,
-		completed: false
-	},
-	{
-		task: 'Do Laundry',
-		id: 124,
-		completed: false
-	},
-	{
-		task: 'Take Out Trash',
-		id: 125,
-		completed: false
-	},
-	{
-		task: 'Make Dinner',
-		id: 126,
-		completed: false
-	},
-	{
-		task: 'Get Groceries',
-		id: 127,
-		completed: false
-	},
-	{
-		task: 'Make Dinner',
-		id: 128,
-		completed: false
-	}
-];
+//Toggle Component Goes Here
+//GroceryList
+import React from 'react';
+import Item from './Item';
+
+const TodoList = props => {
+	console.log(props.tasks);
+	return (
+		<div className='mom-life'>
+			{props.tasks.map(item => {
+				console.log(item);
+				return <Item item={item} key={item.id} />;
+			})}
+		</div>
+	);
+};
+
+export default TodoList;
