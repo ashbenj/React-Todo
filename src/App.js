@@ -1,6 +1,6 @@
 //Index
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+// import ReactDOM from 'react-dom';
 
 import { tasks } from '../src/components/TodoComponents/Todo';
 import './components/TodoComponents/Todo.css';
@@ -59,7 +59,7 @@ class App extends React.Component {
 	// this component is going to take care of state, and any change handlers you need to work with your state
 }
 
-let newApp = new App();
+// let newApp = new App();
 
 // console.log(newApp);
 
