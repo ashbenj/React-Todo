@@ -1,11 +1,12 @@
 //Index
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import { tasks } from '../src/components/TodoComponents/Todo';
-import '../src/components/TodoComponents/Todo.css';
+import './components/TodoComponents/Todo.css';
 
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 class App extends React.Component {
 	constructor() {
@@ -15,8 +16,31 @@ class App extends React.Component {
 			tasks: tasks
 		};
 	}
-	toggleItem = () => {
-		console.log('Got IT!');
+	toggleItem = itemId => {
+		// console.log('Got IT!', itemId);
+		this.setState({
+			tasks: this.state.tasks.map(item => {
+				if (itemId === item.id) {
+					return {
+						...item,
+						completed: !item.completed
+					};
+				}
+				return item;
+			})
+		});
+	};
+
+	addItem = itemText => {
+		const newItem = {
+			name: itemText,
+			completed: false,
+			id: Date.now()
+		};
+
+		this.setState({
+			tasks: [...this.state.tasks, newItem]
+		});
 	};
 
 	render() {
@@ -24,6 +48,7 @@ class App extends React.Component {
 			<div className='App'>
 				<div className='header'>
 					<h2>Mom Life Tasks</h2>
+					<TodoForm addItem={this.addItem} />
 				</div>
 				<TodoList tasks={this.state.tasks} toggleItem={this.toggleItem} />
 			</div>
@@ -36,6 +61,6 @@ class App extends React.Component {
 
 let newApp = new App();
 
-console.log(newApp);
+// console.log(newApp);
 
 export default App;

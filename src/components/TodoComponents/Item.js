@@ -4,9 +4,9 @@ const Item = props => {
 	return (
 		<div
 			className={`item${props.item.completed ? ' completed' : ''}`}
-			onClick={props.toggleItem}
+			onClick={e => props.toggleItem(props.item.id)}
 		>
-			onClick={e => props.toggleItem(props.item.id)}>{props.item.name}
+			{props.item.name}
 		</div>
 	);
 };

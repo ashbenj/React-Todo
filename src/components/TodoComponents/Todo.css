@@ -58,7 +58,8 @@ h1 {
 }
 
 .item.tasks {
-	background-color: #d17d7c;
+	color: black;
+	background-color: #f7f3f3;
 	text-decoration: line-through;
 }
 form {
@@ -74,20 +75,20 @@ form > input {
 	width: 240px;
 	outline: 0;
 	color: white;
-	border-bottom: 1px solid #e64944;
+	border-bottom: 1px solid #d8b726;
 	margin-right: 8px;
 }
 
 button {
-	background-color: #e64944;
-	border: 1px solid #e64944;
+	background-color: #d8b726;
+	border: 1px solid #d8b726;
 	color: white;
 	font-size: 16px;
 	padding: 6px 14px;
 }
 
 input::placeholder {
-	color: #e64944;
+	color: #d8b726;
 	opacity: 1;
 }
 
