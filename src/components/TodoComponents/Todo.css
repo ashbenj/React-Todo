@@ -57,9 +57,9 @@ h1 {
 	cursor: pointer;
 }
 
-.item.tasks {
+.completed {
 	color: black;
-	background-color: #f7f3f3;
+	/* background-color: #f7f3f3; */
 	text-decoration: line-through;
 }
 form {

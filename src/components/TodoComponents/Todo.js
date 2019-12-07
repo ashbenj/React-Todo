@@ -26,7 +26,7 @@ export const tasks = [
 		completed: false
 	},
 	{
-		task: 'Make Dinner',
+		task: 'Lose My Mind',
 		id: 128,
 		completed: false
 	},

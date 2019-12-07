@@ -17,7 +17,7 @@ class App extends React.Component {
 		};
 	}
 	toggleItem = itemId => {
-		// console.log('Got IT!', itemId);
+		console.log('Got IT!', itemId);
 		this.setState({
 			tasks: this.state.tasks.map(item => {
 				if (itemId === item.id) {
@@ -33,7 +33,7 @@ class App extends React.Component {
 
 	addItem = itemText => {
 		const newItem = {
-			name: itemText,
+			task: itemText,
 			completed: false,
 			id: Date.now()
 		};
@@ -43,6 +43,12 @@ class App extends React.Component {
 		});
 	};
 
+	clearCompleted = e => {
+		console.log('not');
+		e.preventDefault();
+		this.setState({ tasks: this.state.tasks.filter(task => !task.completed) });
+	};
+
 	render() {
 		return (
 			<div className='App'>
@@ -50,7 +56,11 @@ class App extends React.Component {
 					<h2>Mom Life Tasks</h2>
 					<TodoForm addItem={this.addItem} />
 				</div>
-				<TodoList tasks={this.state.tasks} toggleItem={this.toggleItem} />
+				<TodoList
+					tasks={this.state.tasks}
+					toggleItem={this.toggleItem}
+					clearCompleted={this.clearCompleted}
+				/>
 			</div>
 		);
 	}
@@ -58,9 +68,5 @@ class App extends React.Component {
 	// design `App` to be the parent component of your application.
 	// this component is going to take care of state, and any change handlers you need to work with your state
 }
-
-// let newApp = new App();
-
-// console.log(newApp);
 
 export default App;
