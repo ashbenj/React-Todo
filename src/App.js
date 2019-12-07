@@ -1,16 +1,72 @@
+//Index
 import React from 'react';
+// import ReactDOM from 'react-dom';
+
+import { tasks } from '../src/components/TodoComponents/Todo';
+import './components/TodoComponents/Todo.css';
+
+import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
-  render() {
-    return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-      </div>
-    );
-  }
+	constructor() {
+		//constructor initializes class this={}
+		super();
+		this.state = {
+			tasks: tasks
+		};
+	}
+	toggleItem = itemId => {
+		console.log('Got IT!', itemId);
+		this.setState({
+			tasks: this.state.tasks.map(item => {
+				if (itemId === item.id) {
+					return {
+						...item,
+						completed: !item.completed
+					};
+				}
+				return item;
+			})
+		});
+	};
+
+	addItem = itemText => {
+		const newItem = {
+			task: itemText,
+			completed: false,
+			id: Date.now()
+		};
+
+		this.setState({
+			tasks: [...this.state.tasks, newItem]
+		});
+	};
+
+	clearCompleted = e => {
+		console.log('not');
+		e.preventDefault();
+		this.setState({ tasks: this.state.tasks.filter(task => !task.completed) });
+	};
+
+	render() {
+		return (
+			<div className='App'>
+				<div className='header'>
+					<h2>Mom Life Tasks</h2>
+					<TodoForm addItem={this.addItem} />
+				</div>
+				<TodoList
+					tasks={this.state.tasks}
+					toggleItem={this.toggleItem}
+					clearCompleted={this.clearCompleted}
+				/>
+			</div>
+		);
+	}
+	// you will need a place to store your state in this component.
+	// design `App` to be the parent component of your application.
+	// this component is going to take care of state, and any change handlers you need to work with your state
 }
 
 export default App;
